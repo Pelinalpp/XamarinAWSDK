@@ -16,7 +16,8 @@ using Microsoft.AppCenter.Crashes;
 
 namespace XamarinAWSDK.Droid
 {
-    internal class MainApplication : AWApplication
+    [Application]
+    public class MainApplication : AWApplication
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
           : base(handle, transer)
