@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinAWSDK.MainPage">
-
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Version: 1.0.8" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label x:Name="Version" Text="Version: -" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
+        <Button Text="Open DLP Page" Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
     </StackLayout>
-
 </ContentPage>

@@ -17,7 +17,7 @@ using Microsoft.AppCenter.Crashes;
 namespace XamarinAWSDK.Droid
 {
     [Application]
-    public class MainApplication : AWApplication
+    public class MainApplication : WorkspaceOneApplication//AWApplication
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
           : base(handle, transer)
@@ -40,6 +40,20 @@ namespace XamarinAWSDK.Droid
             }
         }
 
+        public override void OnCreate()
+        {
+            base.OnCreate();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
+        }
+
+        /*
         public override Intent MainLauncherIntent
         {
             get
@@ -82,5 +96,6 @@ namespace XamarinAWSDK.Droid
                 return true; // to brand application logo
             }
         }
+        */
     }
 }

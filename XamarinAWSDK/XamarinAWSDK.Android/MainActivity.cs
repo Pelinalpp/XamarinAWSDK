@@ -21,6 +21,7 @@ namespace XamarinAWSDK.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, SDKGatewayActivityDelegate.ICallback
     {
         Exception workspaceOneException;
+        SDKGatewayActivityDelegate sDKGatewayActivityDelegate;
 
         readonly string[] all_permissions =
         {

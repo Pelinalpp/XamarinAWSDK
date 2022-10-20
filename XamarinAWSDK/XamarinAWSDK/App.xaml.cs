@@ -43,7 +43,7 @@ namespace XamarinAWSDK
                     Helper.Log($"[{this.GetType()}] IWorkspaceOne == null", "App", "App", "App");
                 }
 
-                MainPage = new MainPage();
+                MainPage = new NavigationPage(new MainPage());
             }
             catch (Exception ex)
             {
@@ -131,35 +131,13 @@ namespace XamarinAWSDK
                     ProfilesReceived(this, new EventArgs());
                 }
 
-                //DismissHudAsync();
-
                 try
                 {
-                    Helper.Log(new { MethodName = "IAWSDKDelegate.ProfilesReceived", Log = "IAWSDKDelegate.ProfilesReceived" }, "", "", "");
+                    Helper.Log(new { MethodName = "IAWSDKDelegate.ProfilesReceived", Log = JsonConvert.SerializeObject(Profiles) }, "", "", "");
                 }
                 catch (Exception ex)
                 {
-                    Helper.Log(ex, "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived");
-                    Crashes.TrackError(ex);
-                }
-
-                try
-                {
-                    Helper.Log(new { MethodName = "IAWSDKDelegate.ProfilesReceived", Log = $"[{this.GetType()}] ProfilesReceived(AWProfile[])" }, "", "", "");
-                }
-                catch (Exception ex)
-                {
-                    Helper.Log(ex, "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived");
-                    Crashes.TrackError(ex);
-                }
-
-                try
-                {
-                    Helper.Log(new { MethodName = "IAWSDKDelegate.ProfilesReceived", Log = JsonConvert.SerializeObject(profiles) }, "", "", "");
-                }
-                catch (Exception ex)
-                {
-                    Helper.Log(ex, "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived", "IAWSDKDelegate.ProfilesReceived");
+                    Helper.Log(ex, "IAWSDKDelegate.ProfilesReceived Profiles Catch", "IAWSDKDelegate.ProfilesReceived Profiles Catch", "IAWSDKDelegate.ProfilesReceived Profiles Catch");
                     Crashes.TrackError(ex);
                 }
             }

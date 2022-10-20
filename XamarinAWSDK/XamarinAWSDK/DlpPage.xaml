@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinAWSDK.DlpPage"
+             xmlns:converter="clr-namespace:XamarinAWSDK.Converter;assembly=XamarinAWSDK">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ListToBooleanConverter x:Key="listToBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout>
+        <ListView x:Name="MyListView" 
+                  ItemsSource="{Binding Items}" 
+                  IsVisible="{Binding Items, 
+            Converter={StaticResource listToBool}, ConverterParameter=0}" 
+                  ItemTapped="Handle_ItemTapped" 
+                  CachingStrategy="RecycleElement">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label IsVisible="{Binding Items, Converter={StaticResource listToBool}, ConverterParameter=1}" 
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding InfoText}" 
+                   HorizontalTextAlignment="Center" 
+                   VerticalTextAlignment="Center" />
+    </StackLayout>
+</ContentPage>

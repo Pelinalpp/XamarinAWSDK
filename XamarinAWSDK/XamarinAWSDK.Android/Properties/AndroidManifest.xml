@@ -1,12 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="9" android:versionName="1.0.8" package="com.companyname.xamarinawsdk" xmlns:tools="http://schemas.android.com/tools" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+		  android:versionCode="47" 
+		  android:versionName="1.0.47" 
+		  package="com.companyname.xamarinawsdk" 
+		  xmlns:tools="http://schemas.android.com/tools" 
+		  android:installLocation="auto">
+	
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
-	<application android:label="XamarinAWSDK.Android" android:theme="@style/MainTheme" tools:replace="android:label,android:allowBackup">
-		<activity android:name="com.airwatch.gateway.ui.GatewaySplashActivity" android:label="XamarinAWSDK" />
-		
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="com.airwatch.sdk.BROADCAST" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
+	
+	<application android:name=".AirWatchSDKSampleApp"
+				 android:label="XamarinAWSDK.Android"
+				 tools:replace="android:label,android:allowBackup" 
+				 android:allowBackup="false"
+				 android:debuggable="false">
+
 		<receiver android:name="com.airwatch.sdk.AirWatchSDKBroadcastReceiver" android:permission="com.airwatch.sdk.BROADCAST">
 			<intent-filter>
-				<action android:name="com.vmware.buildtest.airwatchsdk.BROADCAST" />
+				<action android:name="com.companyname.xamarinawsdk.airwatchsdk.BROADCAST" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.airwatch.intent.action.APPLICATION_CONFIGURATION_CHANGED" />
+				<data android:scheme="app" android:host="com.companyname.xamarinawsdk" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.PACKAGE_ADDED" />
@@ -17,15 +38,20 @@
 				<data android:scheme="package" />
 			</intent-filter>
 		</receiver>
+		
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.xamarinawsdk.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
+
 		<meta-data android:name="com.airwatch.certpinning.refresh.interval" android:value="1" />
 		<meta-data android:name="com.airwatch.certpinning.refresh.interval.unit" android:value="DAYS" />
+
+		<activity android:name="com.airwatch.gateway.ui.GatewaySplashActivity" android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		
 	</application>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="com.airwatch.sdk.BROADCAST" />
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-	<uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
 </manifest>
