@@ -27,6 +27,8 @@ namespace XamarinAWSDK
             {
                 if (DependencyService.Get<IWorkspaceOne>() is IWorkspaceOne ws)
                 {
+                    ws.FormsDelegate = this;
+
                     if (!DesignMode.IsDesignModeEnabled)
                     {
                         ws.SharedInstance.FormsDelegate = this;
